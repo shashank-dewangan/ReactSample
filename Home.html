@@ -1,0 +1,139 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Multiple Node With Collection</title>
+    <meta charset="utf-8" />
+    <script src="js/react.min.js"></script>
+    <script src="js/react-dom.min.js"></script>
+    <script src="js/browser.min.js"></script>
+    <link href="js/Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="js/Bootstrap/css/bootstrap-theme.min.css" rel="stylesheet" />
+    <style type="text/css">
+        body {
+            padding-top: 10px;
+            background-color: darkgray;
+        }
+    </style>
+</head>
+<body>
+
+
+    <div id="mainDiv"></div>
+
+<script type="text/babel">
+        var MainBlock = React.createClass({
+        getInitialState : function(){
+        return { collections : ['Block 1','Block 2','Block 3']}
+        },
+
+        addComment : function(){
+
+        var arr = this.state.collections;
+        arr.push('Default Text');
+        this.setState({collections : arr});
+        },
+
+        updateComment : function(text,i){
+        var arr = this.state.collections;
+        arr[i] = text;
+        this.setState({collections : arr});
+        },
+
+        deleteComment : function(i){
+        var arr = this.state.collections;
+        arr.splice(i,1);
+        this.setState({collections : arr});
+        },
+
+        eachBlock : function(text,i){
+        return (
+        <EventBlock key={i} index={i} updateOnEdit={this.updateComment} deleteComment={this.deleteComment}>
+            {text}
+        </EventBlock>
+        );
+        },
+        render : function(){
+        return (
+
+
+        <div>
+            {
+            this.state.collections.map(this.eachBlock)
+            }
+
+            <div className="row">
+                <div className="col-md-3 col-md-offset-1">
+                    <button className="btn btn-success" onClick={this.addComment}>New Comment</button>
+                </div>
+            </div>
+        </div>
+
+
+        );
+        }
+        });
+
+        var EventBlock = React.createClass({
+        getInitialState : function(){
+        return {editing:false}
+        },
+
+        Edit : function(){this.setState({editing:true});},
+
+        save : function(){
+        var value = this.refs.newText.value;
+        console.log(value);
+        this.props.updateOnEdit(value,this.props.index);
+        this.setState({editing:false})},
+
+        remove : function(){
+        this.props.deleteComment(this.props.index);},
+
+        renderEdit : function(){
+        return (
+        <div className="row">
+            <div className="col-md-3 col-md-offset-1">
+                <div className="well">
+                    <textarea ref="newText">{this.props.children}</textarea>
+                    <br />
+                    <button onClick={this.save} className="btn btn-success">Save</button>
+                </div>
+            </div>
+        </div>
+        );
+        },
+        renderSave : function(){
+        return (
+        <div className="row">
+            <div className="col-md-3 col-md-offset-1">
+                <div className="well">
+                    <label>{this.props.children}</label>
+                    <br />
+                    <button onClick={this.Edit} className="btn btn-primary">Edit</button>
+                    <a href="#">  </a>
+                    <button onClick={this.remove} className="btn btn-danger">Remove</button>
+                </div>
+            </div>
+        </div>
+        );
+        },
+        render : function(){
+
+        if(this.state.editing){
+        return (this.renderEdit());
+        }
+        else{
+        return (this.renderSave());
+        }
+
+        }
+        });
+        ReactDOM.render(
+        <MainBlock />
+        ,document.getElementById('mainDiv'));
+
+
+    </script>
+</body>
+
+</html>

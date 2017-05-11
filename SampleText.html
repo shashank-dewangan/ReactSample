@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Sample - Demo</title>
+    <meta charset="utf-8" />
+
+    <script src="js/react.min.js"></script>
+    <script src="js/react-dom.min.js"></script>
+    <script src="js/browser.min.js"></script>
+    <link href="js/Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="js/Bootstrap/css/bootstrap-theme.min.css" rel="stylesheet" />
+    <script src="js/Bootstrap/js/bootstrap.min.js"></script>
+   
+</head>
+<body>
+
+    <div id="sampleDiv">
+
+    </div>
+
+
+    <script type="text/babel">
+        var MainDIV = React.createClass({
+        render : function(){
+        return (
+        <div>
+            <h3>Sample text to render!!!</h3>
+        </div>
+        );
+        }
+        });
+        ReactDOM.render(
+        <div>
+            <MainDIV />
+            <br />
+            <MainDIV />
+        </div>
+        ,document.getElementById('sampleDiv'));
+
+    </script>
+</body>
+</html>

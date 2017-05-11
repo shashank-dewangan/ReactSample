@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Event Handling</title>
+    <meta charset="utf-8" />
+    <script src="js/react.min.js"></script>
+    <script src="js/react-dom.min.js"></script>
+    <script src="js/browser.min.js"></script>
+    <link href="js/Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="js/Bootstrap/css/bootstrap-theme.min.css" rel="stylesheet" />
+    <style type="text/css">
+        body {
+            padding-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+
+    <div id="mainDiv"></div>
+
+<script type="text/babel">
+        var EventBlock = React.createClass({
+        add : function(){console.log('add clicked');},
+        remove : function(){console.log('remove clicked');},
+        render : function(){
+        return (
+        <div className="col-md-2 col-md-offset-1">
+            <div className="well">
+                <label>{this.props.children}</label>
+                <br />
+                <button onClick={this.add} className="btn btn-primary">Add</button>
+                <a href="#">  </a>
+                <button onClick={this.remove} className="btn btn-danger">Remove</button>
+            </div>
+        </div>
+        );
+        }
+        });
+        ReactDOM.render(
+        <div><EventBlock>Block 1</EventBlock>
+            <EventBlock>Block 2</EventBlock>
+            <EventBlock>Block 3</EventBlock></div>
+        ,document.getElementById('mainDiv'));
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>States Sample</title>
+    <meta charset="utf-8" />
+    <script src="js/react.min.js"></script>
+    <script src="js/react-dom.min.js"></script>
+    <script src="js/browser.min.js"></script>
+    <link href="js/Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="js/Bootstrap/css/bootstrap-theme.min.css" rel="stylesheet" />
+    <style type="text/css">
+        body {
+            padding-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="mainDiv"></div>
+
+    <script type="text/babel">
+        var StateComponent = React.createClass({
+        getInitialState : function(){
+        return {checked : false};
+        },
+
+        handleChange: function(){
+        this.setState({checked : !(this.state.checked)});
+        },
+
+        render : function(){
+        var message ;
+        if(this.state.checked)
+        {
+        message = 'checked';
+        }
+        else
+        {
+        message = 'unchecked';
+        }
+        return (
+        <div className="col-md-10 col-md-offset-1">
+            <div className="well">
+                <input type="checkbox" onChange={this.handleChange} defaultChecked={this.state.checked} />
+                <br />
+                <h3>checkbox is <strong>{message}</strong></h3>
+            </div>
+        </div>
+
+        );
+        }});
+
+        ReactDOM.render(
+        <StateComponent /> , document.getElementById('mainDiv'));
+    </script>
+</body>
+
+</html>

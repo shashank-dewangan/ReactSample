@@ -1,0 +1,13 @@
+﻿
+.custom-table-hover > tbody > tr:hover {
+  background-color: #ffd800;
+}
+.table > thead > tr.custom-warning
+{
+    background-color: #ff6a00;
+}
+
+.defaultDiv
+{
+    padding-top:20px;
+}

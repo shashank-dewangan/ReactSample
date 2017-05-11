@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Components with Properties</title>
+    <meta charset="utf-8" />
+    <script src="js/react.min.js"></script>
+    <script src="js/react-dom.min.js"></script>
+    <script src="js/browser.min.js"></script>
+    <link href="js/Bootstrap/css/bootstrap-theme.min.css" rel="stylesheet" />
+    <link href="js/Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <style type="text/css">
+        body {
+            padding-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+
+    <div id="mainDiv">
+    </div>
+    <script type="text/babel">
+        var MainDIV = React.createClass({
+        render : function(){
+        return (
+        <div>
+            <div className="col-md-10 col-md-offset-1">
+                <div className="well">
+                    <h2>{this.props.title}</h2>
+                    <p>{this.props.body}</p>
+                </div>
+            </div>
+        </div>
+        );
+        }
+        });
+        var ImageComponent = React.createClass(
+        {
+        render : function()
+        {
+        return (
+        <div className="col-md-3">
+            <div className="well">
+                <div className="panel panel-success">
+                    <div className="panel-heading">{this.props.title}</div>
+                    <div className="panel-body">
+                        <a href="#">
+                            <img src={this.props.image} className="img-responsive" alt={this.props.title} />
+                        </a>
+                    </div>
+                    <div className="panel-footer pull-right"><small>@footer for {this.props.title}</small></div>
+                </div>
+            </div>
+
+        </div>);
+        }
+        });
+        ReactDOM.render(
+        <div>
+            <ImageComponent title="Image 1" image="Images/WDF_575498.jpg" />
+            <ImageComponent title="Image 2" image="Images/WDF_575610.jpg" />
+            <ImageComponent title="Image 3" image="Images/WDF_576753.jpg" />
+        </div>
+        ,document.getElementById('mainDiv'));
+
+
+
+    </script>
+</body>
+</html>
