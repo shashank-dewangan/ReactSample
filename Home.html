@@ -20,7 +20,7 @@
 
     <div id="mainDiv"></div>
 
-<script type="text/babel">
+    <script type="text/babel">
         var MainBlock = React.createClass({
         getInitialState : function(){
         return { collections : ['Block 1','Block 2','Block 3']}
@@ -75,7 +75,7 @@
 
         var EventBlock = React.createClass({
         getInitialState : function(){
-        return {editing:false}
+        return {editing:false,counter:0}
         },
 
         Edit : function(){this.setState({editing:true});},
@@ -84,7 +84,8 @@
         var value = this.refs.newText.value;
         console.log(value);
         this.props.updateOnEdit(value,this.props.index);
-        this.setState({editing:false})},
+        var Count = this.state.counter + 1;
+        this.setState({editing:false, counter : Count})},
 
         remove : function(){
         this.props.deleteComment(this.props.index);},
@@ -109,7 +110,7 @@
                 <div className="well">
                     <label>{this.props.children}</label>
                     <br />
-                    <button onClick={this.Edit} className="btn btn-primary">Edit</button>
+                    <button onClick={this.Edit} className="btn btn-primary">Edit <span className="badge">{this.state.counter}</span></button>
                     <a href="#">  </a>
                     <button onClick={this.remove} className="btn btn-danger">Remove</button>
                 </div>
