@@ -10,7 +10,7 @@ On click of edit, textarea will appear and save changes the label with provided 
 
 New button can add new comment section.
 
-#Detail
+# Detail
 it has other samples e.g.
 
 . How to add same component multiple times.
