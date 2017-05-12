@@ -1,7 +1,7 @@
 # ReactSample
 Adding/Editing/Removing Comment Box
 
-# Description
+## Description
 Home Page has sample code to add comment section.
 
 comment box contains Edit and Cancel button with label.
@@ -10,13 +10,13 @@ On click of edit, textarea will appear and save changes the label with provided 
 
 New button can add new comment section.
 
-# Detail
-it has other samples e.g.
+## Details
+It has other sample codes e.g.
 
-. How to add same component multiple times.
+- How to add same component multiple times.
 
-. State sample.
+- State sample.
 
-. Props sample.
+- Props sample.
 
-. Event Handling.
+- Event Handling.
